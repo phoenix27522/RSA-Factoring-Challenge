@@ -1,10 +1,7 @@
 #!/usr/bin/python3
-
 """Factorize as many numbers as possible
 into a product of two smaller numbers.
 """
-
-
 import sys
 
 if len(sys.argv) < 2:
@@ -20,7 +17,7 @@ try:
             while d < i:
                 if i % d == 0:
                     div = i // d
-                    print("{:d} = {:d} * {:d}".format(i, d, div))
+                    print("{:d}={:d}*{:d}".format(i, d, div))
                     break
                 else:
                     d += 1
@@ -28,4 +25,3 @@ except FileNotFoundError:
     print(f"The file {file_name} does not exist.")
 except IOError:
     print(f"An error occurred while trying to read {file_name}.")
-
