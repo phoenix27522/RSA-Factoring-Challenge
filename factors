@@ -1,0 +1,31 @@
+#!/usr/bin/python3
+
+"""Factorize as many numbers as possible
+into a product of two smaller numbers.
+"""
+
+
+import sys
+
+if len(sys.argv) < 2:
+    print("Usage: python script.py <file_name>")
+    sys.exit(1)
+
+try:
+    with open(sys.argv[1], "r") as file:
+        d = 2
+        lines = file.readlines()
+        for line in lines:
+            i = int(line.strip())
+            while d < i:
+                if i % d == 0:
+                    div = i // d
+                    print("{:d} = {:d} * {:d}".format(i, d, div))
+                    break
+                else:
+                    d += 1
+except FileNotFoundError:
+    print(f"The file {file_name} does not exist.")
+except IOError:
+    print(f"An error occurred while trying to read {file_name}.")
+
