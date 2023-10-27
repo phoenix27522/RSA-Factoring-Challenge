@@ -4,24 +4,17 @@ into a product of two smaller numbers.
 """
 import sys
 
-if len(sys.argv) < 2:
-    print("Usage: python script.py <file_name>")
-    sys.exit(1)
+with open(sys.argv[1], "r") as fp:
+    Lines = fp.readlines()
+    new_list = [int(i) for i in Lines]
+    new_list.sort()
 
-try:
-    with open(sys.argv[1], "r") as file:
+    for line in new_list:
         d = 2
-        lines = file.readlines()
-        for line in lines:
-            i = int(line.strip())
-            while d < i:
-                if i % d == 0:
-                    div = i // d
-                    print("{:d}={:d}*{:d}".format(i, d, div))
-                    break
-                else:
-                    d += 1
-except FileNotFoundError:
-    print(f"The file {file_name} does not exist.")
-except IOError:
-    print(f"An error occurred while trying to read {file_name}.")
+        while d < line:
+            if line % d == 0:
+                f = line // d
+                print("{}={}*{}".format(line, f, d))
+                break
+            else:
+                d += 1
